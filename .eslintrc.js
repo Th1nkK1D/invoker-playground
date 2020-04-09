@@ -10,5 +10,8 @@ module.exports = {
   ],
   env: {
     "jest/globals": true
+  },
+  rules: {
+    "arrow-parens": ["error", "as-needed"]
   }
 };
