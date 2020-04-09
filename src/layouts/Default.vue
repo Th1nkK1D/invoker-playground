@@ -1,61 +1,13 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link
-          class="nav__link"
-          to="/"
-        >
-          Home
-        </g-link>
-        <g-link
-          class="nav__link"
-          to="/about/"
-        >
-          About
-        </g-link>
-      </nav>
+  <div class="h-screen bg-black flex flex-col">
+    <header class="p-3 text-white text-center">
+      Invoker Playground
     </header>
-    <slot />
+    <div class="container flex-1 mx-auto">
+      <slot />
+    </div>
+    <footer class="p-3 text-xs text-gray-500 text-center">
+      All right reserved
+    </footer>
   </div>
 </template>
-
-<static-query>
-  query {
-    metadata {
-      siteName
-    }
-  }
-</static-query>
-
-<style>
-body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial,sans-serif;
-  margin:0;
-  padding:0;
-  line-height: 1.5;
-}
-
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
-}
-</style>
