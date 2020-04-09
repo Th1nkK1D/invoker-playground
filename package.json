@@ -1,0 +1,50 @@
+{
+  "name": "gridsome-boilerplate",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "dev": "gridsome develop",
+    "explore": "gridsome explore",
+    "lint": "eslint src/**/*.{js,vue}",
+    "test": "jest",
+    "watchTest": "jest --watch",
+    "gen": "hygen"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/vue": "^5.0.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-gridsome": "^1.4.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-testing-library": "^2.2.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.3",
+    "hygen": "^5.0.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.9",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "vue-eslint-parser": "^7.0.0",
+    "vue-jest": "^3.0.5"
+  }
+}
