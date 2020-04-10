@@ -9,15 +9,25 @@ const requiredOrbs = [quas, wex, wex];
 
 const tornado = new Skill(name, requiredOrbs);
 
-test('should initlize with name', () => {
+test('should initialize with name', () => {
   expect(tornado.name).toBe(name);
 });
 
-test('should initlize with required orbs', () => {
+test('should initialize with required orbs', () => {
   expect(tornado.requiredOrbs).toStrictEqual(requiredOrbs);
 });
 
-describe('isFulFilledWith function', () => {
+test('should initialize icon with empty string if not provided', () => {
+  expect(tornado.icon).toBe('');
+});
+
+test('should initialize icon with provided icon', () => {
+  const skillWithIcon = new Skill('someSkill', [], 'icon');
+
+  expect(skillWithIcon.icon).toBe('icon');
+});
+
+describe('isFulFilledWith method', () => {
   test('should return true with required orb matche the given parameter', () => {
     expect(tornado.isFulFilledWith([quas, wex, wex])).toBeTruthy();
   });

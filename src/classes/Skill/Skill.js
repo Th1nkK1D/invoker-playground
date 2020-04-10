@@ -3,8 +3,9 @@ class Skill {
     return orbs.sort((a, b) => a.key.localeCompare(b.key));
   }
 
-  constructor(name, requiredOrbs) {
+  constructor(name, requiredOrbs, icon = '') {
     this.name = name;
+    this.icon = icon;
     this.requiredOrbs = Skill.sortOrbs(requiredOrbs);
   }
 
