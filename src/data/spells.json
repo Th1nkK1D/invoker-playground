@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Cold Snap",
+    "requiredOrbs": "qqq",
+    "icon": ""
+  },
+  {
+    "name": "Ghost Walk",
+    "requiredOrbs": "qqw",
+    "icon": ""
+  },
+  {
+    "name": "Ice Wall",
+    "requiredOrbs": "qqe",
+    "icon": ""
+  },
+  {
+    "name": "EMP",
+    "requiredOrbs": "www",
+    "icon": ""
+  },
+  {
+    "name": "Tornado",
+    "requiredOrbs": "wwq",
+    "icon": ""
+  },
+  {
+    "name": "Alacrity",
+    "requiredOrbs": "wwe",
+    "icon": ""
+  },
+  {
+    "name": "Sun Strike",
+    "requiredOrbs": "eee",
+    "icon": ""
+  },
+  {
+    "name": "Forge Spirit",
+    "requiredOrbs": "eeq",
+    "icon": ""
+  },
+  {
+    "name": "Chaos Meteor",
+    "requiredOrbs": "eew",
+    "icon": ""
+  },
+  {
+    "name": "Deafening Blast",
+    "requiredOrbs": "qwe",
+    "icon": ""
+  }
+]

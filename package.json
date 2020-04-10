@@ -22,6 +22,8 @@
     }
   },
   "dependencies": {
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-json": "^0.2.1",
     "gridsome": "^0.7.0",
     "gridsome-plugin-tailwindcss": "^2.2.43",
     "vue-keypress": "^1.4.0"
