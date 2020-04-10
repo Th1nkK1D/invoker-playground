@@ -13,6 +13,10 @@ class Skill {
     return Skill.sortOrbs(orbs)
       .every((orb, i) => orb.isEqualTo(this.requiredOrbs[i]));
   }
+
+  isEqualTo(skill) {
+    return skill && skill.name && skill.name === this.name;
+  }
 }
 
 export default Skill;

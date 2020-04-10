@@ -40,3 +40,13 @@ describe('isFulFilledWith method', () => {
     expect(tornado.isFulFilledWith([quas, quas, wex])).toBeFalsy();
   });
 });
+
+describe('isEqualTo method', () => {
+  test('should return true if name is matched', () => {
+    expect(tornado.isEqualTo(tornado)).toBeTruthy();
+  });
+
+  test('should return false if name is not match', () => {
+    expect(tornado.isEqualTo(emp)).toBeFalsy();
+  });
+});
