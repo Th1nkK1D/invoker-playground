@@ -1,13 +1,11 @@
-import Skill from './Skill';
-import Orb from '../Orb/Orb';
-
-const quas = new Orb('Quas', 'q');
-const wex = new Orb('Wex', 'w');
+import Spell from './Spell';
+import { quas, wex } from '../../mock/mockedOrbs';
+import { emp } from '../../mock/mockedSpells';
 
 const name = 'Tornado';
 const requiredOrbs = [quas, wex, wex];
 
-const tornado = new Skill(name, requiredOrbs);
+const tornado = new Spell(name, requiredOrbs);
 
 test('should initialize with name', () => {
   expect(tornado.name).toBe(name);
@@ -22,9 +20,9 @@ test('should initialize icon with empty string if not provided', () => {
 });
 
 test('should initialize icon with provided icon', () => {
-  const skillWithIcon = new Skill('someSkill', [], 'icon');
+  const spellWithIcon = new Spell('someSpell', [], 'icon');
 
-  expect(skillWithIcon.icon).toBe('icon');
+  expect(spellWithIcon.icon).toBe('icon');
 });
 
 describe('isFulFilledWith method', () => {

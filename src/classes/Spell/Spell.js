@@ -1,4 +1,4 @@
-class Skill {
+class Spell {
   static sortOrbs(orbs) {
     return orbs.sort((a, b) => a.key.localeCompare(b.key));
   }
@@ -6,17 +6,17 @@ class Skill {
   constructor(name, requiredOrbs, icon = '') {
     this.name = name;
     this.icon = icon;
-    this.requiredOrbs = Skill.sortOrbs(requiredOrbs);
+    this.requiredOrbs = Spell.sortOrbs(requiredOrbs);
   }
 
   isFulFilledWith(orbs) {
-    return Skill.sortOrbs(orbs)
+    return Spell.sortOrbs(orbs)
       .every((orb, i) => orb.isEqualTo(this.requiredOrbs[i]));
   }
 
-  isEqualTo(skill) {
-    return skill && skill.name && skill.name === this.name;
+  isEqualTo(spell) {
+    return spell && spell.name && spell.name === this.name;
   }
 }
 
-export default Skill;
+export default Spell;

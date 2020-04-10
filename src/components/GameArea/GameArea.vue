@@ -1,14 +1,14 @@
 <template>
   <div>
     game-area
-    <SkillBar
-      data-testId="skillBar"
-      :skill="targetSkill"
+    <SpellBar
+      data-testId="spellBar"
+      :spell="targetSpell"
     />
     <Keypress
       :key-code="keycode.space"
       event="keypress"
-      @pressed="getNextTargetSkill"
+      @pressed="getNextTargetSpell"
     />
   </div>
 </template>
@@ -16,19 +16,19 @@
 <script>
 import Keypress from 'vue-keypress';
 
-import SkillBar from '../SkillBar/SkillBar.vue';
+import SpellBar from '../SpellBar/SpellBar.vue';
 import keycode from '../../data/keycode.json';
 
-let skillPool = [];
+let spellPool = [];
 
 export default {
   name: 'GameArea',
   components: {
-    SkillBar,
+    SpellBar,
     Keypress,
   },
   props: {
-    skills: {
+    spells: {
       type: Array,
       default: () => [],
     },
@@ -36,23 +36,23 @@ export default {
   data() {
     return {
       keycode,
-      targetSkill: null,
+      targetSpell: null,
     };
   },
   mounted() {
-    skillPool = [...this.skills];
+    spellPool = [...this.spells];
   },
   methods: {
-    getNextTargetSkill() {
-      const randomIndex = Math.floor(Math.random() * skillPool.length);
+    getNextTargetSpell() {
+      const randomIndex = Math.floor(Math.random() * spellPool.length);
 
-      const [nextTargetSkill] = skillPool.splice(randomIndex, 1);
+      const [nextTargetSpell] = spellPool.splice(randomIndex, 1);
 
-      if (this.targetSkill !== null) {
-        skillPool.push(this.targetSkill);
+      if (this.targetSpell !== null) {
+        spellPool.push(this.targetSpell);
       }
 
-      this.targetSkill = nextTargetSkill;
+      this.targetSpell = nextTargetSpell;
     },
   },
 };

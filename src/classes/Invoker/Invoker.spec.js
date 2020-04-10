@@ -1,21 +1,21 @@
 import Invoker from './Invoker';
 import Orb from '../Orb/Orb';
-import Skill from '../Skill/Skill';
+import Spell from '../Spell/Spell';
 
 const wex = new Orb('Wex', 'w');
-const emp = new Skill('EMP', [wex, wex, wex]);
+const emp = new Spell('EMP', [wex, wex, wex]);
 
-const skills = [emp];
+const spells = [emp];
 
-const invoker = new Invoker(skills);
+const invoker = new Invoker(spells);
 
 test('should initialize with 3 null orbs', () => {
   expect(invoker.activeOrbs).toHaveLength(3);
   expect(invoker.activeOrbs.every(orb => orb == null)).toBeTruthy();
 });
 
-test('should initialize with skills', () => {
-  expect(invoker.skills).toStrictEqual(skills);
+test('should initialize with spells', () => {
+  expect(invoker.spells).toStrictEqual(spells);
 });
 
 test('should push orb to activeOrbs when castOrb', () => {
@@ -25,11 +25,11 @@ test('should push orb to activeOrbs when castOrb', () => {
 });
 
 describe('invoke function', () => {
-  test('should return null if fulfilled skill is not exist', () => {
+  test('should return null if fulfilled spell is not exist', () => {
     expect(invoker.invoke()).toBeNull();
   });
 
-  test('should return fulfilled skill if exist', () => {
+  test('should return fulfilled spell if exist', () => {
     invoker.castOrb(wex);
     invoker.castOrb(wex);
     invoker.castOrb(wex);

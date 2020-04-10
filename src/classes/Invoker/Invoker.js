@@ -1,7 +1,7 @@
 class Invoker {
-  constructor(skills) {
+  constructor(spells) {
     this.activeOrbs = [null, null, null];
-    this.skills = skills;
+    this.spells = spells;
   }
 
   castOrb(orb) {
@@ -14,7 +14,7 @@ class Invoker {
       return null;
     }
 
-    return this.skills.find(skill => skill.isFulFilledWith(this.activeOrbs));
+    return this.spells.find(spell => spell.isFulFilledWith(this.activeOrbs));
   }
 }
 
