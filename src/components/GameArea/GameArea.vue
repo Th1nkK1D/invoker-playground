@@ -9,7 +9,7 @@
       v-for="key in watchedKeys"
       :key="key.code"
       :key-code="key.code"
-      event="keypress"
+      event="keydown"
       @pressed="key.handler"
     />
   </div>

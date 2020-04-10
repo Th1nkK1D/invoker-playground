@@ -6,7 +6,7 @@ import { quas, wex } from '../../mock/mockedOrbs';
 
 async function simulateKeyPress(code) {
   window.event = { keyCode: code };
-  await fireEvent.keyPress(window, { code });
+  await fireEvent.keyDown(window, { code });
 
   return Promise.resolve();
 }
