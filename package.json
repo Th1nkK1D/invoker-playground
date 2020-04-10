@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "gridsome": "^0.7.0",
-    "gridsome-plugin-tailwindcss": "^2.2.43"
+    "gridsome-plugin-tailwindcss": "^2.2.43",
+    "vue-keypress": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
