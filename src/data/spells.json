@@ -2,51 +2,51 @@
   {
     "name": "Cold Snap",
     "requiredOrbs": "qqq",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/f/fb/Cold_Snap_icon.png"
   },
   {
     "name": "Ghost Walk",
     "requiredOrbs": "qqw",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/c/c8/Ghost_Walk_icon.png"
   },
   {
     "name": "Ice Wall",
     "requiredOrbs": "qqe",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/2/2d/Ice_Wall_icon.png"
   },
   {
     "name": "EMP",
     "requiredOrbs": "www",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/9/97/EMP_icon.png"
   },
   {
     "name": "Tornado",
     "requiredOrbs": "wwq",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/e/e1/Tornado_icon.png"
   },
   {
     "name": "Alacrity",
     "requiredOrbs": "wwe",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/1/1b/Alacrity_icon.png"
   },
   {
     "name": "Sun Strike",
     "requiredOrbs": "eee",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/8/83/Sun_Strike_icon.png"
   },
   {
     "name": "Forge Spirit",
     "requiredOrbs": "eeq",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/c/cb/Forge_Spirit_icon.png"
   },
   {
     "name": "Chaos Meteor",
     "requiredOrbs": "eew",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/7/76/Chaos_Meteor_icon.png"
   },
   {
     "name": "Deafening Blast",
     "requiredOrbs": "qwe",
-    "icon": ""
+    "icon": "https://gamepedia.cursecdn.com/dota2_gamepedia/d/dd/Deafening_Blast_icon.png"
   }
 ]
