@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       watchedKeys: [
-        { code: keycode.space, handler: this.getNextTargetSpell },
+        { code: keycode.space, handler: this.onStartPressed },
         { code: keycode.q, handler: this.onOrbPressed },
         { code: keycode.w, handler: this.onOrbPressed },
         { code: keycode.e, handler: this.onOrbPressed },
@@ -52,8 +52,10 @@ export default {
       targetSpell: null,
     };
   },
-  mounted() {
-    invoker = new Invoker(this.spells);
+  computed: {
+    isStarted() {
+      return this.targetSpell !== null;
+    },
   },
   methods: {
     getNextTargetSpell() {
@@ -62,17 +64,27 @@ export default {
 
       [this.targetSpell] = spellPool.splice(randomIndex, 1);
     },
+    onStartPressed() {
+      if (!this.isStarted) {
+        invoker = new Invoker(this.spells);
+        this.getNextTargetSpell();
+      }
+    },
     onOrbPressed(pressedKeyCode) {
-      const orbKey = Object.keys(keycode).find(key => keycode[key] === pressedKeyCode);
-      const castedOrb = this.orbs.find(orb => orb.key === orbKey);
+      if (this.isStarted) {
+        const orbKey = Object.keys(keycode).find(key => keycode[key] === pressedKeyCode);
+        const castedOrb = this.orbs.find(orb => orb.key === orbKey);
 
-      invoker.castOrb(castedOrb);
+        invoker.castOrb(castedOrb);
+      }
     },
     onInvokePressed() {
-      const spell = invoker.invoke();
+      if (this.isStarted) {
+        const spell = invoker.invoke();
 
-      if (spell && spell.isEqualTo(this.targetSpell)) {
-        this.getNextTargetSpell();
+        if (spell && spell.isEqualTo(this.targetSpell)) {
+          this.getNextTargetSpell();
+        }
       }
     },
   },
