@@ -6,9 +6,11 @@
       :spell="targetSpell"
     />
     <Keypress
-      :key-code="keycode.space"
+      v-for="key in watchedKeys"
+      :key="key.code"
+      :key-code="key.code"
       event="keypress"
-      @pressed="getNextTargetSpell"
+      @pressed="key.handler"
     />
   </div>
 </template>
@@ -17,9 +19,11 @@
 import Keypress from 'vue-keypress';
 
 import SpellBar from '../SpellBar/SpellBar.vue';
+import Invoker from '../../classes/Invoker/Invoker';
 import keycode from '../../data/keycode.json';
 
-let spellPool = [];
+let spellPool;
+let invoker;
 
 export default {
   name: 'GameArea',
@@ -28,6 +32,10 @@ export default {
     Keypress,
   },
   props: {
+    orbs: {
+      type: Array,
+      default: () => [],
+    },
     spells: {
       type: Array,
       default: () => [],
@@ -35,12 +43,19 @@ export default {
   },
   data() {
     return {
-      keycode,
+      watchedKeys: [
+        { code: keycode.space, handler: this.getNextTargetSpell },
+        { code: keycode.q, handler: this.onOrbPressed },
+        { code: keycode.w, handler: this.onOrbPressed },
+        { code: keycode.e, handler: this.onOrbPressed },
+        { code: keycode.r, handler: this.onInvokePressed },
+      ],
       targetSpell: null,
     };
   },
   mounted() {
     spellPool = [...this.spells];
+    invoker = new Invoker(this.spells);
   },
   methods: {
     getNextTargetSpell() {
@@ -53,6 +68,19 @@ export default {
       }
 
       this.targetSpell = nextTargetSpell;
+    },
+    onOrbPressed(pressedKeyCode) {
+      const orbKey = Object.keys(keycode).find(key => keycode[key] === pressedKeyCode);
+      const castedOrb = this.orbs.find(orb => orb.key === orbKey);
+
+      invoker.castOrb(castedOrb);
+    },
+    onInvokePressed() {
+      const spell = invoker.invoke();
+
+      if (spell && spell.isEqualTo(this.targetSpell)) {
+        this.getNextTargetSpell();
+      }
     },
   },
 };
