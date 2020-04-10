@@ -22,7 +22,6 @@ import SpellBar from '../SpellBar/SpellBar.vue';
 import Invoker from '../../classes/Invoker/Invoker';
 import keycode from '../../data/keycode.json';
 
-let spellPool;
 let invoker;
 
 export default {
@@ -54,20 +53,14 @@ export default {
     };
   },
   mounted() {
-    spellPool = [...this.spells];
     invoker = new Invoker(this.spells);
   },
   methods: {
     getNextTargetSpell() {
+      const spellPool = this.spells.filter(spell => spell !== this.targetSpell);
       const randomIndex = Math.floor(Math.random() * spellPool.length);
 
-      const [nextTargetSpell] = spellPool.splice(randomIndex, 1);
-
-      if (this.targetSpell !== null) {
-        spellPool.push(this.targetSpell);
-      }
-
-      this.targetSpell = nextTargetSpell;
+      [this.targetSpell] = spellPool.splice(randomIndex, 1);
     },
     onOrbPressed(pressedKeyCode) {
       const orbKey = Object.keys(keycode).find(key => keycode[key] === pressedKeyCode);
