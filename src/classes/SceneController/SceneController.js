@@ -1,11 +1,13 @@
 import {
-  PerspectiveCamera, Scene, WebGLRenderer, Object3D,
+  PerspectiveCamera, Scene, WebGLRenderer, Object3D, Mesh, SphereGeometry, MeshBasicMaterial,
 } from 'three';
 
 class SceneController {
   constructor(width, height) {
     this.scene = new Scene();
+
     this.camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
+    this.camera.position.z = 5;
 
     this.renderer = new WebGLRenderer();
     this.renderer.setSize(width, height);
@@ -22,7 +24,7 @@ class SceneController {
 
     this.scene.add(...this.orbs);
 
-    this.camera.position.z = 5;
+    this.nextOrbIndex = 0;
   }
 
   init(htmlDOM) {
@@ -33,6 +35,26 @@ class SceneController {
     requestAnimationFrame(() => this.animate());
 
     this.renderer.render(this.scene, this.camera);
+  }
+
+  pushOrb(orbKey) {
+    const orbsColors = {
+      q: 0x00AAFF,
+      w: 0xBF5FFF,
+      e: 0xFFAA00,
+    };
+
+    const targetOrb = this.orbs[this.nextOrbIndex];
+
+    if (targetOrb.children) {
+      targetOrb.children.pop();
+    }
+
+    targetOrb.add(
+      new Mesh(new SphereGeometry(0.5), new MeshBasicMaterial({ color: orbsColors[orbKey] })),
+    );
+
+    this.nextOrbIndex = (this.nextOrbIndex + 1) % 3;
   }
 }
 

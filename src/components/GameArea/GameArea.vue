@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ModelScene />
+    <ModelScene ref="modelScene" />
     <SpellBar
       data-testId="spellBar"
       :spell="targetSpell"
@@ -82,6 +82,7 @@ export default {
         const castedOrb = this.orbs.find(orb => orb.key === orbKey);
 
         invoker.castOrb(castedOrb);
+        this.$refs.modelScene.pushOrb(castedOrb);
       }
     },
     onInvokePressed() {
