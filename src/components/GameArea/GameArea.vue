@@ -1,6 +1,6 @@
 <template>
   <div>
-    game-area
+    <ModelScene />
     <SpellBar
       data-testId="spellBar"
       :spell="targetSpell"
@@ -21,6 +21,7 @@ import Keypress from 'vue-keypress';
 import SpellBar from '../SpellBar/SpellBar.vue';
 import Invoker from '../../classes/Invoker/Invoker';
 import keycode from '../../data/keycode.json';
+import ModelScene from '../ModelScene/ModelScene.vue';
 
 let invoker;
 
@@ -29,6 +30,7 @@ export default {
   components: {
     SpellBar,
     Keypress,
+    ModelScene,
   },
   props: {
     orbs: {
@@ -59,7 +61,9 @@ export default {
   },
   methods: {
     getNextTargetSpell() {
-      const spellPool = this.spells.filter(spell => spell !== this.targetSpell);
+      const spellPool = this.spells.filter(
+        spell => spell !== this.targetSpell,
+      );
       const randomIndex = Math.floor(Math.random() * spellPool.length);
 
       [this.targetSpell] = spellPool.splice(randomIndex, 1);
@@ -72,7 +76,9 @@ export default {
     },
     onOrbPressed(pressedKeyCode) {
       if (this.isStarted) {
-        const orbKey = Object.keys(keycode).find(key => keycode[key] === pressedKeyCode);
+        const orbKey = Object.keys(keycode).find(
+          key => keycode[key] === pressedKeyCode,
+        );
         const castedOrb = this.orbs.find(orb => orb.key === orbKey);
 
         invoker.castOrb(castedOrb);

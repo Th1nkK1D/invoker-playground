@@ -26,6 +26,7 @@
     "@gridsome/transformer-json": "^0.2.1",
     "gridsome": "^0.7.0",
     "gridsome-plugin-tailwindcss": "^2.2.43",
+    "three": "^0.116.1",
     "vue-keypress": "^1.4.0"
   },
   "devDependencies": {
