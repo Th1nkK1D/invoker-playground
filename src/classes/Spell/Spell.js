@@ -1,6 +1,6 @@
 class Spell {
   static sortOrbs(orbs) {
-    return orbs.sort((a, b) => a.key.localeCompare(b.key));
+    return [...orbs].sort((a, b) => a.key.localeCompare(b.key));
   }
 
   constructor(name, requiredOrbs, icon = '') {
