@@ -89,6 +89,8 @@ export default {
       if (this.isStarted) {
         const spell = invoker.invoke();
 
+        this.$refs.modelScene.invoke();
+
         if (spell && spell.isEqualTo(this.targetSpell)) {
           this.getNextTargetSpell();
         }

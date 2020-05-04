@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-indigo-900 flex flex-col">
+  <div class="h-screen bg-black flex flex-col">
     <header class="p-3 text-white text-center">
       Invoker Playground
     </header>

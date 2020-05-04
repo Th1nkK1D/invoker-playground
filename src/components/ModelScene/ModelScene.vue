@@ -25,6 +25,9 @@ export default {
     pushOrb(orb) {
       this.sceneController.pushOrb(orb.key);
     },
+    invoke() {
+      this.sceneController.invoke();
+    },
   },
 };
 </script>

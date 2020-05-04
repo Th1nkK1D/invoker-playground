@@ -1,5 +1,14 @@
 import {
-  Scene, WebGLRenderer, Object3D, Mesh, SphereGeometry, MeshBasicMaterial,
+  Scene,
+  WebGLRenderer,
+  Object3D,
+  Mesh,
+  SphereGeometry,
+  MeshBasicMaterial,
+  Clock,
+  AnimationMixer,
+  AnimationClip,
+  LoopOnce,
 } from 'three';
 
 import GLTFLoader from 'three-gltf-loader';
@@ -12,25 +21,38 @@ class SceneController {
     this.renderer = new WebGLRenderer();
     this.renderer.setSize(width, height);
 
+    this.clock = new Clock();
+
+    this.invokerAnimationMixer = null;
+    this.invokerAnimationClips = [];
+
     this.orbs = [
       new Object3D(),
       new Object3D(),
       new Object3D(),
     ];
 
-    this.orbs[0].position.setX(-2);
-    this.orbs[1].position.setX(0);
-    this.orbs[2].position.setX(2);
+    this.orbs[0].position.setX(-3).setY(4).setZ(-1);
+    this.orbs[1].position.setX(0).setY(7.5).setZ(-1);
+    this.orbs[2].position.setX(3).setY(4).setZ(-1);
 
     this.scene.add(...this.orbs);
 
     this.nextOrbIndex = 0;
+    this.nextCastedHand = 'l';
+
+    window.scene = this.scene;
   }
 
   render(htmlDOM) {
-    this.loader.load('../models/invoker.glb', glb => {
-      this.scene.add(...glb.scene.children);
-      [this.camera] = glb.cameras;
+    this.loader.load('../models/invoker.glb', gltf => {
+      this.scene.add(...gltf.scene.children);
+      [this.camera] = gltf.cameras;
+
+      this.invokerAnimationClips = gltf.animations;
+      this.invokerAnimationMixer = new AnimationMixer(this.scene.getObjectByName('invoker'));
+
+      this.getAnimationAction('idle').play();
 
       htmlDOM.appendChild(this.renderer.domElement);
 
@@ -41,6 +63,10 @@ class SceneController {
   animate() {
     requestAnimationFrame(() => this.animate());
 
+    if (this.invokerAnimationMixer !== null) {
+      this.invokerAnimationMixer.update(this.clock.getDelta());
+    }
+
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -50,6 +76,13 @@ class SceneController {
       w: 0xBF5FFF,
       e: 0xFFAA00,
     };
+
+    this.getAnimationAction(`cast_${this.nextCastedHand}`)
+      .stop()
+      .setLoop(LoopOnce)
+      .fadeIn(0.5)
+      .fadeOut(0.5)
+      .play();
 
     const targetOrb = this.orbs[this.nextOrbIndex];
 
@@ -62,6 +95,22 @@ class SceneController {
     );
 
     this.nextOrbIndex = (this.nextOrbIndex + 1) % 3;
+    this.nextCastedHand = this.nextCastedHand === 'l' ? 'r' : 'l';
+  }
+
+  invoke() {
+    this.getAnimationAction('invoke')
+      .stop()
+      .setLoop(LoopOnce)
+      .fadeIn(0.5)
+      .fadeOut(0.5)
+      .play();
+  }
+
+  getAnimationAction(name) {
+    return this.invokerAnimationMixer.clipAction(
+      AnimationClip.findByName(this.invokerAnimationClips, name),
+    );
   }
 }
 
