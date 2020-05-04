@@ -15,10 +15,11 @@ export default {
   name: 'ModelScene',
   data() {
     return {
-      sceneController: new SceneController(SCREEN_WIDTH, SCREEN_HEIGHT),
+      sceneController: null,
     };
   },
   mounted() {
+    this.sceneController = new SceneController(SCREEN_WIDTH, SCREEN_HEIGHT);
     this.sceneController.render(this.$refs.scene);
   },
   methods: {

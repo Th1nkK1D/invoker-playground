@@ -40,8 +40,6 @@ class SceneController {
 
     this.nextOrbIndex = 0;
     this.nextCastedHand = 'l';
-
-    window.scene = this.scene;
   }
 
   render(htmlDOM) {
