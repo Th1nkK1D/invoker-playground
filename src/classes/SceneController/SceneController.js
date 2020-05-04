@@ -80,8 +80,6 @@ class SceneController {
     this.getAnimationAction(`cast_${this.nextCastedHand}`)
       .stop()
       .setLoop(LoopOnce)
-      .fadeIn(0.5)
-      .fadeOut(0.5)
       .play();
 
     const targetOrb = this.orbs[this.nextOrbIndex];
@@ -102,8 +100,6 @@ class SceneController {
     this.getAnimationAction('invoke')
       .stop()
       .setLoop(LoopOnce)
-      .fadeIn(0.5)
-      .fadeOut(0.5)
       .play();
   }
 
