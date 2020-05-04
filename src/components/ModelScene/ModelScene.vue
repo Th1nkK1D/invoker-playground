@@ -8,7 +8,7 @@
 <script>
 import SceneController from '../../classes/SceneController/SceneController';
 
-const SCREEN_WIDTH = 400;
+const SCREEN_WIDTH = 500;
 const SCREEN_HEIGHT = 500;
 
 export default {
@@ -19,8 +19,7 @@ export default {
     };
   },
   mounted() {
-    this.sceneController.init(this.$refs.scene);
-    this.sceneController.animate();
+    this.sceneController.render(this.$refs.scene);
   },
   methods: {
     pushOrb(orb) {

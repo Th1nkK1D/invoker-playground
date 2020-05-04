@@ -1,13 +1,13 @@
 import {
-  PerspectiveCamera, Scene, WebGLRenderer, Object3D, Mesh, SphereGeometry, MeshBasicMaterial,
+  Scene, WebGLRenderer, Object3D, Mesh, SphereGeometry, MeshBasicMaterial,
 } from 'three';
+
+import GLTFLoader from 'three-gltf-loader';
 
 class SceneController {
   constructor(width, height) {
     this.scene = new Scene();
-
-    this.camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
-    this.camera.position.z = 5;
+    this.loader = new GLTFLoader();
 
     this.renderer = new WebGLRenderer();
     this.renderer.setSize(width, height);
@@ -27,8 +27,15 @@ class SceneController {
     this.nextOrbIndex = 0;
   }
 
-  init(htmlDOM) {
-    return htmlDOM.appendChild(this.renderer.domElement);
+  render(htmlDOM) {
+    this.loader.load('../models/invoker.glb', glb => {
+      this.scene.add(...glb.scene.children);
+      [this.camera] = glb.cameras;
+
+      htmlDOM.appendChild(this.renderer.domElement);
+
+      this.animate();
+    });
   }
 
   animate() {
