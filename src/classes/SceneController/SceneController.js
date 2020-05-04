@@ -43,7 +43,7 @@ class SceneController {
   }
 
   render(htmlDOM) {
-    this.loader.load('../models/invoker.glb', gltf => {
+    this.loader.load(`${process.env.GRIDSOME_STATIC_PATH}/models/invoker.glb`, gltf => {
       this.scene.add(...gltf.scene.children);
       [this.camera] = gltf.cameras;
 

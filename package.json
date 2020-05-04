@@ -1,5 +1,5 @@
 {
-  "name": "gridsome-boilerplate",
+  "name": "invoer-playground",
   "private": true,
   "scripts": {
     "build": "gridsome build",

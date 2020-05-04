@@ -5,7 +5,9 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome',
+  siteName: 'Invoker Playground',
+  siteUrl: 'https://th1nkk1d.github.io',
+  pathPrefix: '/invoker-playground',
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',
