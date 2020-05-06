@@ -17,6 +17,7 @@
           data {
             name
             key
+            color
           }
         }
       }
@@ -54,7 +55,10 @@ export default {
     };
   },
   mounted() {
-    this.orbs = this.$page.orbs.edges[0].node.data.map(({ name, key }) => new Orb(name, key));
+    this.orbs = this.$page.orbs.edges[0].node.data.map(
+      ({ name, key, color }) => new Orb(name, key, +color),
+    );
+
     this.spells = this.$page.spells.edges[0].node.data.map(
       ({ name, requiredOrbs, icon }) => new Spell(
         name,

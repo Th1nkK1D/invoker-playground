@@ -2,7 +2,8 @@ import Orb from './Orb';
 
 const name = 'Wex';
 const key = 'w';
-const wex = new Orb(name, key);
+const color = 0x01234;
+const wex = new Orb(name, key, color);
 
 test('should intilize with name', () => {
   expect(wex.name).toBe(name);
@@ -10,6 +11,10 @@ test('should intilize with name', () => {
 
 test('should intilize with key', () => {
   expect(wex.key).toBe(key);
+});
+
+test('should intilize with color', () => {
+  expect(wex.color).toBe(color);
 });
 
 describe('isEqualTo method', () => {

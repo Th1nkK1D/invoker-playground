@@ -1,7 +1,8 @@
 class Orb {
-  constructor(name, key) {
+  constructor(name, key, color) {
     this.name = name;
     this.key = key;
+    this.color = color;
   }
 
   isEqualTo({ key }) {

@@ -70,7 +70,7 @@ class SceneController {
     this.renderer.render(this.scene, this.camera);
   }
 
-  pushOrb(orbKey) {
+  pushOrb(orbColor) {
     this.getAnimationAction(`cast_${this.nextCastedHand}`)
       .stop()
       .setLoop(LoopOnce)
@@ -82,26 +82,19 @@ class SceneController {
       targetOrb.children.pop();
     }
 
-    targetOrb.add(SceneController.generateOrbMesh(orbKey));
-
+    targetOrb.add(SceneController.generateOrbMesh(orbColor));
 
     this.nextOrbIndex = (this.nextOrbIndex + 1) % 3;
     this.nextCastedHand = this.nextCastedHand === 'l' ? 'r' : 'l';
   }
 
-  static generateOrbMesh(orbKey) {
-    const orbsColors = {
-      q: 0x00AAFF,
-      w: 0xBF5FFF,
-      e: 0xFFAA00,
-    };
-
+  static generateOrbMesh(orbColor) {
     const orbMesh = new Mesh(
       new SphereGeometry(0.5),
       new MeshBasicMaterial({ color: 'white' }),
     );
 
-    const glowMesh = new GeometricGlowMesh(orbMesh, orbsColors[orbKey]);
+    const glowMesh = new GeometricGlowMesh(orbMesh, orbColor);
     orbMesh.add(glowMesh.object3d);
 
     return orbMesh;

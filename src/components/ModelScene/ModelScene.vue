@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     pushOrb(orb) {
-      this.sceneController.pushOrb(orb.key);
+      this.sceneController.pushOrb(orb.color);
     },
     invoke() {
       this.sceneController.invoke();

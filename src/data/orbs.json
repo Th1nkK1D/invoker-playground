@@ -1,14 +1,17 @@
 [
   { 
     "name": "Quas",
-    "key": "q"
+    "key": "q",
+    "color": "0x00AAFF"
   },
   { 
     "name": "Wex",
-    "key": "w"
+    "key": "w",
+    "color": "0xBF5FFF"
   },
   { 
     "name": "Exort",
-    "key": "e"
+    "key": "e",
+    "color": "0xFFAA00"
   }
 ]
