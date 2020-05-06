@@ -1,5 +1,9 @@
 <template>
-  <div class="flex flex-row bg-white h-12 max-w-md m-auto rounded-full p-1 shadow-md">
+  <div
+    ref="container"
+    class="flex flex-row bg-white h-12 max-w-md m-auto rounded-full p-1 shadow-md
+    transition-colors duration-500 ease-in-out"
+  >
     <img
       v-if="spell"
       :src="spell.icon"
@@ -24,6 +28,19 @@ export default {
   name: 'SpellBar',
   props: {
     spell: Spell,
+  },
+  methods: {
+    triggerContainerClass(className) {
+      this.$refs.container.classList.add(className);
+
+      setTimeout(() => this.$refs.container.classList.remove(className), 500);
+    },
+    triggerValidInvoke() {
+      this.triggerContainerClass('bg-green-500');
+    },
+    triggerInvalidInvoke() {
+      this.triggerContainerClass('bg-red-500');
+    },
   },
 };
 </script>

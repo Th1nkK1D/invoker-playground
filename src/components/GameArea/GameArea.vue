@@ -2,6 +2,7 @@
   <div>
     <ModelScene ref="modelScene" />
     <SpellBar
+      ref="spellBar"
       data-testId="spellBar"
       :spell="targetSpell"
     />
@@ -92,7 +93,10 @@ export default {
         this.$refs.modelScene.invoke();
 
         if (spell && spell.isEqualTo(this.targetSpell)) {
+          this.$refs.spellBar.triggerValidInvoke();
           this.getNextTargetSpell();
+        } else {
+          this.$refs.spellBar.triggerInvalidInvoke();
         }
       }
     },
