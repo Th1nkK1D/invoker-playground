@@ -13,6 +13,8 @@ import {
 
 import GLTFLoader from 'three-gltf-loader';
 
+import GeometricGlowMesh from '../../libs/threex.geometricglowmesh/GeometricGlowMesh';
+
 class SceneController {
   constructor(width, height) {
     this.scene = new Scene();
@@ -69,12 +71,6 @@ class SceneController {
   }
 
   pushOrb(orbKey) {
-    const orbsColors = {
-      q: 0x00AAFF,
-      w: 0xBF5FFF,
-      e: 0xFFAA00,
-    };
-
     this.getAnimationAction(`cast_${this.nextCastedHand}`)
       .stop()
       .setLoop(LoopOnce)
@@ -86,12 +82,29 @@ class SceneController {
       targetOrb.children.pop();
     }
 
-    targetOrb.add(
-      new Mesh(new SphereGeometry(0.5), new MeshBasicMaterial({ color: orbsColors[orbKey] })),
-    );
+    targetOrb.add(SceneController.generateOrbMesh(orbKey));
+
 
     this.nextOrbIndex = (this.nextOrbIndex + 1) % 3;
     this.nextCastedHand = this.nextCastedHand === 'l' ? 'r' : 'l';
+  }
+
+  static generateOrbMesh(orbKey) {
+    const orbsColors = {
+      q: 0x00AAFF,
+      w: 0xBF5FFF,
+      e: 0xFFAA00,
+    };
+
+    const orbMesh = new Mesh(
+      new SphereGeometry(0.5),
+      new MeshBasicMaterial({ color: 'white' }),
+    );
+
+    const glowMesh = new GeometricGlowMesh(orbMesh, orbsColors[orbKey]);
+    orbMesh.add(glowMesh.object3d);
+
+    return orbMesh;
   }
 
   invoke() {

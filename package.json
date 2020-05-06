@@ -28,6 +28,7 @@
     "gridsome-plugin-tailwindcss": "^2.2.43",
     "three": "^0.116.1",
     "three-gltf-loader": "^1.111.0",
+    "threex.geometricglow": "https://github.com/jeromeetienne/threex.geometricglow",
     "vue-keypress": "^1.4.0"
   },
   "devDependencies": {
