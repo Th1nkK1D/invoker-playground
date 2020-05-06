@@ -1,22 +1,10 @@
-# My Favorite Gridsome Boilerplate
+# Invoker Playground
 
-## What's included
-1. Gridsome
-   - [Gridsome](https://gridsome.org) default template
-   - Scss/Sass support with node-sass
-2. Testing Library
-   - [Vue Testing Library](http://testing-library.com/vue)
-   - [Jest](https://jestjs.io)
-   - [jest-dom](https://github.com/testing-library/jest-dom)
-3. Eslint
-   - [Airbnb base](github.com/airbnb/javascript)
-   - [Vue](https://github.com/vuejs/eslint-plugin-vue)
-   - [Gridsome](https://github.com/gridsome/eslint-plugin-gridsome)
-   - [Jest](https://github.com/jest-community/eslint-plugin-jest)
-   - [Testing Library](https://github.com/testing-library/eslint-plugin-testing-library)
-4. Git hooks
-   - [Husky](https://github.com/typicode/husky)
-   - [lint-staged](https://github.com/okonet/lint-staged)
-   - config: pre-commit lint + pre-push test
-5. Generator
-   - [Hygen](http://www.hygen.io) for component and page
+Where you can practice invoking Invoker's abilities
+
+## Main Tools
+1. **Gridsome** as a static site builder based on VueJS
+2. **ThreeJS** as a javascript 3D model rendering library
+3. **Blender** as a model and animation creator
+4. **Jest** + **Vue Testing Library** as testing tools for TDD
+5. **Github Actions** as a deployment pipeline to GitHub Page
