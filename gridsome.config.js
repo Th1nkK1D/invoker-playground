@@ -7,6 +7,8 @@
 module.exports = {
   siteName: 'Invoker Playground',
   siteUrl: 'https://th1nkk1d.github.io',
+  siteDescription: 'Practice make perfect, said Invoker (?)',
+  titleTemplate: 'Invoker Playground',
   pathPrefix: '/invoker-playground',
   plugins: [
     {

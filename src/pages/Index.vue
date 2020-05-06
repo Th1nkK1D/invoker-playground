@@ -42,9 +42,6 @@ import Orb from '../classes/Orb/Orb';
 import Spell from '../classes/Spell/Spell';
 
 export default {
-  metaInfo: {
-    title: 'Invoker Playground',
-  },
   components: {
     GameArea,
   },
