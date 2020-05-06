@@ -10,8 +10,8 @@ import {
   AnimationClip,
   LoopOnce,
 } from 'three';
-
 import GLTFLoader from 'three-gltf-loader';
+import TWEEN from '@tweenjs/tween.js';
 
 import GeometricGlowMesh from '../../libs/threex.geometricglowmesh/GeometricGlowMesh';
 
@@ -56,6 +56,17 @@ class SceneController {
 
       htmlDOM.appendChild(this.renderer.domElement);
 
+      this.orbs.forEach((orb, i) => {
+        new TWEEN.Tween(orb.position)
+          .to({ y: orb.position.y + 0.2 }, 2000)
+          .repeat(Infinity)
+          .yoyo(true)
+          .delay(i * 1000)
+          .repeatDelay(0)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .start();
+      });
+
       this.animate();
     });
   }
@@ -66,6 +77,8 @@ class SceneController {
     if (this.invokerAnimationMixer !== null) {
       this.invokerAnimationMixer.update(this.clock.getDelta());
     }
+
+    TWEEN.update();
 
     this.renderer.render(this.scene, this.camera);
   }
