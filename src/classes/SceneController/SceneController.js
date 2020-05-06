@@ -45,29 +45,33 @@ class SceneController {
   }
 
   render(htmlDOM) {
-    this.loader.load(`${process.env.GRIDSOME_STATIC_PATH}/models/invoker.glb`, gltf => {
-      this.scene.add(...gltf.scene.children);
-      [this.camera] = gltf.cameras;
+    return new Promise(resolve => {
+      this.loader.load(`${process.env.GRIDSOME_STATIC_PATH}/models/invoker.glb`, gltf => {
+        this.scene.add(...gltf.scene.children);
+        [this.camera] = gltf.cameras;
 
-      this.invokerAnimationClips = gltf.animations;
-      this.invokerAnimationMixer = new AnimationMixer(this.scene.getObjectByName('invoker'));
+        this.invokerAnimationClips = gltf.animations;
+        this.invokerAnimationMixer = new AnimationMixer(this.scene.getObjectByName('invoker'));
 
-      this.getAnimationAction('idle').play();
+        this.getAnimationAction('idle').play();
 
-      htmlDOM.appendChild(this.renderer.domElement);
+        htmlDOM.appendChild(this.renderer.domElement);
 
-      this.orbs.forEach((orb, i) => {
-        new TWEEN.Tween(orb.position)
-          .to({ y: orb.position.y + 0.2 }, 2000)
-          .repeat(Infinity)
-          .yoyo(true)
-          .delay(i * 1000)
-          .repeatDelay(0)
-          .easing(TWEEN.Easing.Quadratic.InOut)
-          .start();
+        this.orbs.forEach((orb, i) => {
+          new TWEEN.Tween(orb.position)
+            .to({ y: orb.position.y + 0.2 }, 2000)
+            .repeat(Infinity)
+            .yoyo(true)
+            .delay(i * 1000)
+            .repeatDelay(0)
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .start();
+        });
+
+        this.animate();
+
+        resolve();
       });
-
-      this.animate();
     });
   }
 
