@@ -11,6 +11,7 @@ jobs:
 
       - name: Install 📦️
         run: |
+          rm -rf node_modules/
           npm install
 
       - name: Test 🔍️
