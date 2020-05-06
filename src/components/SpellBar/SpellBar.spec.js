@@ -12,6 +12,12 @@ test('should show press space to start if spell prop is null', () => {
   expect(container).toHaveTextContent('Press space to start');
 });
 
+test('should show control hint if spell prop is null', () => {
+  const { container } = render(SpellBar);
+
+  expect(container).toHaveTextContent('Q, W, E to cast Quas, Wex and Exort - R to invoke');
+});
+
 test('should show spell name if spell prop is not null', () => {
   const { container } = render(SpellBar, {
     props: { spell: emp },

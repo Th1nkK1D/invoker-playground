@@ -11,8 +11,16 @@
       role="img"
       class="h-full rounded-full"
     >
-    <div class="text-black flex-1 flex flex-col justify-center font-bold">
-      {{ spell ? spell.name : 'Press space to start' }}
+    <div class="flex-1 flex flex-col justify-center">
+      <div class="text-black font-bold">
+        {{ spell ? spell.name : 'Press space to start' }}
+      </div>
+      <div
+        v-if="!spell"
+        class="text-xs text-gray-500"
+      >
+        Q, W, E to cast Quas, Wex and Exort - R to invoke
+      </div>
     </div>
     <div
       v-if="spell"

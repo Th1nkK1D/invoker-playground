@@ -6,7 +6,7 @@ class Spell {
   constructor(name, requiredOrbs, icon = '') {
     this.name = name;
     this.icon = icon;
-    this.requiredOrbs = Spell.sortOrbs(requiredOrbs);
+    this.requiredOrbs = Spell.sortOrbs(requiredOrbs).map(orb => orb);
   }
 
   isFulFilledWith(orbs) {
