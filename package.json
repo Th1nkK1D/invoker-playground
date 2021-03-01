@@ -27,7 +27,7 @@
     "@tweenjs/tween.js": "^18",
     "gridsome": "^0.7.0",
     "gridsome-plugin-tailwindcss": "^2.2.43",
-    "three": "^0.116.1",
+    "three": "^0.125.0",
     "three-gltf-loader": "^1.111.0",
     "vue-keypress": "^1.4.0"
   },
